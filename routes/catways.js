@@ -1,6 +1,6 @@
 const express = require("express");
-const Catway = require("../models/Catway");
-const Reservation = require("../models/Reservation");
+const Catway = require("../models/catway");
+const Reservation = require("../models/reservation");
 const auth = require("../middlewares/auth.middleware");
 
 const router = express.Router();
