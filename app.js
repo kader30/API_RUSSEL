@@ -1,10 +1,10 @@
 const express = require("express");
 const session = require("express-session");
-require("./config/database");
+require("./db/mongo.js");
 
 const authRoutes = require("./routes/auth.routes");
-const usersRoutes = require("./routes/users.routes");
-const catwaysRoutes = require("./routes/catways.routes");
+const usersRoutes = require("./routes/users");
+const catwaysRoutes = require("./routes/catways");
 
 const app = express();
 
