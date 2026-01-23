@@ -1,20 +1,26 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const express = require("express");
+const session = require("express-session");
+require("./config/database");
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const authRoutes = require("./routes/auth.routes");
+const usersRoutes = require("./routes/users.routes");
+const catwaysRoutes = require("./routes/catways.routes");
 
-var app = express();
+const app = express();
 
-app.use(logger('dev'));
+app.set("view engine", "ejs");
+app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use("/", authRoutes);
+app.use("/users", usersRoutes);
+app.use("/catways", catwaysRoutes);
 
 module.exports = app;
