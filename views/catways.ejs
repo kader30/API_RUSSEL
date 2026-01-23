@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Catways</title>
+</head>
+<body>
+  <h1>Gestion des catways</h1>
+
+  <a href="/dashboard">⬅ Retour dashboard</a>
+
+  <h2>Créer un catway</h2>
+  <form method="POST" action="/catways">
+    <input name="catwayNumber" type="number" placeholder="Numéro" required />
+    <select name="catwayType">
+      <option value="long">Long</option>
+      <option value="short">Court</option>
+    </select>
+    <input name="catwayState" placeholder="État" required />
+    <button>Créer</button>
+  </form>
+
+  <h2>Liste des catways</h2>
+  <ul>
+    <% catways.forEach(catway => { %>
+      <li>
+        Catway <strong>#<%= catway.catwayNumber %></strong> |
+        Type: <%= catway.catwayType %> |
+        État: <%= catway.catwayState %>
+
+        <a href="/catways/<%= catway.catwayNumber %>/reservations">
+          📅 Réservations
+        </a>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>

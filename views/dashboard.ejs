@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+</head>
+<body>
+  <h1>Tableau de bord</h1>
+
+  <p>
+    Connecté en tant que :
+    <strong><%= user.username %></strong> (<%= user.email %>)
+  </p>
+
+  <p>Date : <%= new Date().toLocaleDateString() %></p>
+
+  <nav>
+    <ul>
+      <li><a href="/catways">Catways</a></li>
+      <li><a href="/users">Utilisateurs</a></li>
+      <li><a href="/logout">Déconnexion</a></li>
+    </ul>
+  </nav>
+</body>
+</html>
