@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Réservations</title>
+</head>
+<body>
+  <h1>Réservations – Catway <%= catway %></h1>
+
+  <a href="/catways">⬅ Retour catways</a>
+
+  <h2>Nouvelle réservation</h2>
+  <form method="POST" action="/catways/<%= catway %>/reservations">
+    <input name="clientName" placeholder="Nom du client" required />
+    <input name="boatName" placeholder="Nom du bateau" required />
+    <input name="startDate" type="date" required />
+    <input name="endDate" type="date" required />
+    <button>Réserver</button>
+  </form>
+
+  <h2>Réservations existantes</h2>
+  <ul>
+    <% reservations.forEach(r => { %>
+      <li>
+        <strong><%= r.clientName %></strong> — 
+        <%= r.boatName %><br>
+        Du <%= r.startDate.toLocaleDateString() %>
+        au <%= r.endDate.toLocaleDateString() %>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>

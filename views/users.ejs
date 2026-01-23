@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Utilisateurs</title>
+</head>
+<body>
+  <h1>Gestion des utilisateurs</h1>
+
+  <a href="/dashboard">⬅ Retour dashboard</a>
+
+  <h2>Créer un utilisateur</h2>
+  <form method="POST" action="/users">
+    <input name="username" placeholder="Nom d'utilisateur" required />
+    <input name="email" placeholder="Email" required />
+    <input name="password" type="password" placeholder="Mot de passe" required />
+    <button>Créer</button>
+  </form>
+
+  <h2>Liste des utilisateurs</h2>
+  <ul>
+    <% users.forEach(user => { %>
+      <li>
+        <strong><%= user.username %></strong> — <%= user.email %>
+        <form method="POST" action="/users/delete/<%= user.email %>" style="display:inline">
+          <button>Supprimer</button>
+        </form>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>
